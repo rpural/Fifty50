@@ -1,0 +1,168 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{96, 20}, {313, 127}}",
+        "class" : "ImageView",
+        "attributes" : {
+          "flex" : "R",
+          "frame" : "{{214, 91}, {100, 100}}",
+          "class" : "ImageView",
+          "name" : "logoImage",
+          "uuid" : "084C9BE1-B7AB-4EAF-A533-2992B7403C7A"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{96, 243}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label1",
+          "frame" : "{{189, 125}, {150, 32}}",
+          "uuid" : "13FF48E0-A840-48BB-9DF0-F16E179C7960",
+          "class" : "Label",
+          "alignment" : "right",
+          "text" : "Cost per ticket:",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{255.5, 243}, {200, 32}}",
+        "class" : "TextField",
+        "attributes" : {
+          "border_width" : 1,
+          "name" : "ticketCost",
+          "frame" : "{{164, 125}, {200, 32}}",
+          "spellchecking_type" : "default",
+          "class" : "TextField",
+          "uuid" : "93395ECC-0493-4228-BC16-57CAD7EAE361",
+          "alignment" : "left",
+          "corner_radius" : 10,
+          "autocorrection_type" : "default",
+          "font_size" : 17,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{96, 283}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label2",
+          "frame" : "{{189, 125}, {150, 32}}",
+          "uuid" : "C42DD95A-FE27-426B-B456-29FEB92CC717",
+          "class" : "Label",
+          "alignment" : "right",
+          "text" : "Participent file:",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{255.5, 283}, {200, 32}}",
+        "class" : "TextField",
+        "attributes" : {
+          "uuid" : "FD2CC323-1CA8-43D1-99E7-C8F191477DED",
+          "corner_radius" : 10,
+          "frame" : "{{164, 125}, {200, 32}}",
+          "border_width" : 1,
+          "alignment" : "left",
+          "autocorrection_type" : "default",
+          "placeholder" : "3660.json",
+          "font_name" : "<System>",
+          "spellchecking_type" : "default",
+          "class" : "TextField",
+          "name" : "filename",
+          "font_size" : 17
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{203, 364}, {106, 37}}",
+        "class" : "Button",
+        "attributes" : {
+          "action" : "setupComplete",
+          "border_width" : 1,
+          "frame" : "{{224, 125}, {80, 32}}",
+          "title" : "Continue",
+          "uuid" : "260CCC6C-1FCA-4E76-A88E-6EAEAC2A1D57",
+          "class" : "Button",
+          "corner_radius" : 10,
+          "background_color" : "RGBA(0.780392,0.850980,1.000000,1.000000)",
+          "name" : "setupCmplete",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{96, 161}, {313, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 18,
+          "frame" : "{{191, 174}, {150, 32}}",
+          "uuid" : "BEB177BB-2191-4220-8DF3-9152CA75060B",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Msgr. M. Downey Council 3660",
+          "name" : "label3",
+          "font_name" : "Cochin-BoldItalic"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{173, 465}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "version",
+          "text_color" : "RGBA(0.423456,0.931604,0.169383,1.000000)",
+          "flex" : "WT",
+          "frame" : "{{191, 236}, {150, 32}}",
+          "uuid" : "E4D01C72-29B4-442D-8A60-A0C9CFC6654E",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "version 0.00",
+          "font_size" : 11,
+          "font_name" : "<System>"
+        },
+        "selected" : true
+      }
+    ],
+    "frame" : "{{0, 0}, {531, 503}}",
+    "class" : "View",
+    "attributes" : {
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "flex" : ""
+    },
+    "selected" : false
+  }
+]
