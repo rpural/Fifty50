@@ -1,0 +1,167 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 98}, {475, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 28,
+          "frame" : "{{169, 200}, {150, 32}}",
+          "uuid" : "910792E0-5FED-43FF-9F61-2FD69FDED38F",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Winner:",
+          "name" : "label1",
+          "font_name" : "Baskerville-SemiBoldItalic"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{0, 138}, {475, 65}}",
+        "class" : "Label",
+        "attributes" : {
+          "font_size" : 46,
+          "text_color" : "RGBA(1.000000,0.236364,0.236364,1.000000)",
+          "frame" : "{{169, 200}, {150, 32}}",
+          "uuid" : "ED29AD83-49BF-4BDB-8CFC-F0C84E40B455",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Label",
+          "name" : "winner",
+          "font_name" : "<System>"
+        },
+        "selected" : true
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{68, 321}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label2",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{169, 200}, {150, 32}}",
+          "uuid" : "AB2BA851-4A86-4EEB-A1C4-A756FEE7A797",
+          "class" : "Label",
+          "alignment" : "right",
+          "text" : "Total:",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{68, 361}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label3",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{169, 200}, {150, 32}}",
+          "uuid" : "4E3B5F4F-0914-4AFD-AB11-1C950B4C44FD",
+          "class" : "Label",
+          "alignment" : "right",
+          "text" : "Winner’s pot:",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{226, 321}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "total",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{169, 200}, {150, 32}}",
+          "uuid" : "A925A951-46CD-4611-A7C1-FBBD242C2FE2",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Label",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{226, 361}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "pot",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{169, 200}, {150, 32}}",
+          "uuid" : "720051AE-692B-4B40-A951-A6029E459CFA",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Label",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{68, 281}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label4",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{169, 200}, {150, 32}}",
+          "uuid" : "50ABE106-CEE8-41E8-8295-A0C2EA3AB67D",
+          "class" : "Label",
+          "alignment" : "right",
+          "text" : "Total entries:",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{226, 281}, {150, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "entries",
+          "text_color" : "RGBA(0.000000,0.000000,1.000000,1.000000)",
+          "frame" : "{{169, 200}, {150, 32}}",
+          "uuid" : "38B026CC-E054-415A-ADD0-30EB6F0D2A3F",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Label",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      }
+    ],
+    "frame" : "{{0, 0}, {487, 431}}",
+    "class" : "View",
+    "attributes" : {
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "flex" : ""
+    },
+    "selected" : false
+  }
+]
