@@ -3,6 +3,8 @@ A ticketless 50/50 raffle drawing
 
 written for iOS / iPadOS Pythonista app
 
+![Sample entries view](images/58313984-63C6-42CF-89DA-C3B7E3BB140C_1_201_a.jpeg)
+
 In a traditional 50/50 raffle
 drawing, tickets are sold at
 a fixed price to a limited group
@@ -44,6 +46,8 @@ add one to the number of tickets. A field for entering new
 names is at the bottom of the of the view. If a name needs to be
 removed or edited, swipe left on the name to delete it, then 
 re-enter the name correctly.
+
+![Sample winner view](images/D74AC285-3138-453D-AA72-71D9BC73C7F8_1_201_a.jpeg)
 
 Once sales of tickets is complete, touch Draw to open the 
 Winner screen. At this point, the compiled list will be
