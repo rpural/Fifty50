@@ -1,0 +1,154 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 6}, {560, 501}}",
+        "class" : "TableView",
+        "attributes" : {
+          "flex" : "WH",
+          "data_source_items" : "Row 1\nRow 2\nRow 3",
+          "data_source_font_size" : 18,
+          "frame" : "{{205, 196}, {200, 200}}",
+          "uuid" : "368B6555-D10B-4BAA-A6C9-ADA304829184",
+          "data_source_number_of_lines" : 1,
+          "class" : "TableView",
+          "background_color" : "RGBA(1.0, 1.0, 1.0, 1.0)",
+          "data_source_delete_enabled" : true,
+          "name" : "participents",
+          "row_height" : 44
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 576}, {406, 32}}",
+        "class" : "TextField",
+        "attributes" : {
+          "uuid" : "4C581370-B783-4766-83D4-7315678FD56D",
+          "flex" : "T",
+          "corner_radius" : 10,
+          "frame" : "{{205, 280}, {200, 32}}",
+          "border_width" : 1,
+          "alignment" : "left",
+          "autocorrection_type" : "default",
+          "action" : "newName",
+          "placeholder" : "New participent…",
+          "font_name" : "<System>",
+          "spellchecking_type" : "default",
+          "class" : "TextField",
+          "name" : "nameField",
+          "font_size" : 17
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{486, 576}, {41, 32}}",
+        "class" : "Button",
+        "attributes" : {
+          "border_width" : 1,
+          "action" : "drawWinner",
+          "flex" : "T",
+          "frame" : "{{265, 280}, {80, 32}}",
+          "title" : "Draw",
+          "uuid" : "2BE27A8A-8077-40D8-B0B5-100C822885AB",
+          "class" : "Button",
+          "corner_radius" : 10,
+          "background_color" : "RGBA(0.781818,0.854545,1.000000,1.000000)",
+          "font_size" : 15,
+          "name" : "drawButton"
+        },
+        "selected" : true
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 616}, {82, 25}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label1",
+          "frame" : "{{229, 310}, {150, 32}}",
+          "uuid" : "D11A1DBA-AD23-4610-87FE-E8929F6C90B4",
+          "class" : "Label",
+          "alignment" : "right",
+          "text" : "Total:",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{96, 614}, {83, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "total",
+          "frame" : "{{229, 310}, {150, 32}}",
+          "uuid" : "C5CACC53-276F-4D87-A3F7-77CA7BA2663B",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "Label",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{187, 614}, {71, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label2",
+          "frame" : "{{229, 310}, {150, 32}}",
+          "uuid" : "7B8785F5-DAA4-4D40-9D2D-AA4603B56F6F",
+          "class" : "Label",
+          "alignment" : "right",
+          "text" : "Pot:",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{266, 614}, {85, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "pot",
+          "frame" : "{{229, 310}, {150, 32}}",
+          "uuid" : "4377F006-4E60-4120-92B6-96554D8A9AD7",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "Label",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      }
+    ],
+    "frame" : "{{0, 0}, {607, 652}}",
+    "class" : "View",
+    "attributes" : {
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "flex" : ""
+    },
+    "selected" : false
+  }
+]
