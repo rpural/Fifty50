@@ -21,12 +21,22 @@
       and the dollar amount received,
       and the winner's pot (half the total).
       
+    - After each raffle, a log is created
+      tracking the amount paid, the pot,
+      the winner, and how many tickets
+      each person purchased.
+      
   Initially customized for use by KofC
   Council 3660, Indianapolis, Indiana.  
 '''
+
 import ui
 import json
 import random
+from datetime import date
+from pathlib import Path
+
+version = '1.02'
 
 class Participents:
 	def __init__(self):
@@ -62,11 +72,13 @@ class Participents:
 
 	def tableview_can_move(self, tableview, section, row):
 		# Return True if a reordering control should be shown for the given row (in editing mode).
-		return True
+		return False
 
 	def tableview_delete(self, tableview, section, row):
 		# Called when the user confirms deletion of the given row.
-		pass
+		del(ev['participents'].data_source.items[row])
+		ev['participents'].reload_data()
+		self.save_names()
 
 	def tableview_move_row(self, tableview, from_section, from_row, to_section, to_row):
 		# Called when the user moves a row with the reordering control (in editing mode).
@@ -75,8 +87,12 @@ class Participents:
 	# delegate methods	
 	def tableview_did_select(self, tableview, section, row):
 		# Called when a row was selected.
-		ev['participents'].data_source.items[row]['count'] += 1
-		ev['participents'].data_source.items[row]['detail_text_label'] = f'({ev["participents"].data_source.items[row]["count"]})'
+		if ev['participents'].editing:
+			incr = -1
+		else:
+			incr = 1
+		ev['participents'].data_source.items[row]['count'] += incr
+		ev['participents'].data_source.items[row]['detail_text_label'] = f'{ev["participents"].data_source.items[row]["count"]} tickets'
 		ev['participents'].reload_data()
 		self.calculate_total()
 		ev['total'].text = f"${ev['participents'].data_source.total:,.2f}"
@@ -95,7 +111,7 @@ class Participents:
 		try:
 			with open(self.filename, "r") as f:
 				names = json.load(f)
-				self.items = [{'text_label': n, 'detail_text_label': '(0)', 'count': 0} for n in names]
+				self.items = [{'text_label': n, 'detail_text_label': ' ', 'count': 0} for n in names]
 				self.items.sort(key=lambda n: n['text_label'])
 				return True
 		except FileNotFoundError:
@@ -117,6 +133,7 @@ def setupComplete(sender):
 	ev['participents'].data_source.filename = sv['filename'].text or '3660.json'
 	ev['participents'].data_source.ticketCost = float(sv['ticketCost'].text)
 	ev['participents'].data_source.load_names()
+	ev['participents'].allows_selection_during_editing = True
 	ev['total'].text = f"${ev['participents'].data_source.total:,.2f}"
 	ev['pot'].text = f"${ev['participents'].data_source.pot:,.2f}"
 	v['navView'].push_view(ev)
@@ -125,9 +142,16 @@ def setupComplete(sender):
 def newName(sender):
 	name = sender.text
 	sender.text = ''
-	ev['participents'].data_source.items.append({'text_label': name, 'detail_text_label': '(0)', 'count': 0})
+	ev['participents'].data_source.items.append({'text_label': name, 'detail_text_label': ' ', 'count': 0})
 	ev['participents'].data_source.items.sort(key=lambda n: n['text_label'])
 	ev['participents'].reload_data()
+	ev['participents'].data_source.save_names()
+	
+def toggleEditing(sender):
+	if ev['participents'].editing == True:
+		ev['participents'].set_editing(False)
+	else:
+		ev['participents'].set_editing(True)
 	
 def drawWinner(sender):
 	try:
@@ -138,17 +162,25 @@ def drawWinner(sender):
 	ev['participents'].data_source.save_names()
 	wv['winner'].text = winner
 	ev['participents'].data_source.calculate_total()
+	create_log(winner)
 	wv['entries'].text = f"{ev['participents'].data_source.entries}"
 	wv['total'].text = f"${ev['participents'].data_source.total:,.2f}"
 	wv['pot'].text = f"${ev['participents'].data_source.pot:,.2f}"
 	v['navView'].push_view(wv)
 	
+def create_log(winner):
+	data = ev['participents'].data_source
+	p = Path(data.filename).stem + '.log'
+	entries = {d['text_label']: d['count'] for d in data.items}
+	with open(p, "a") as f:
+		print(f'{{ "timestamp": "{date.today()}", "winner": "{winner}", "total": {data.total:,.2f}, "entries": {data.entries}, "pot": {data.pot:,.2f} "salesrec": {entries} }}', file=f)
 
 v = ui.load_view()
 v.name = 'Fifty50'
 
 sv = ui.load_view('setupView.pyui')
 sv['logoImage'].image = ui.Image('IMG_0002.JPG')
+sv['version'].text = f'version {version}'
 
 ev = ui.load_view('entryView.pyui')
 
