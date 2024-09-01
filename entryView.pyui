@@ -5,20 +5,20 @@
         "nodes" : [
 
         ],
-        "frame" : "{{6, 6}, {560, 501}}",
+        "frame" : "{{6, 6}, {560, 525}}",
         "class" : "TableView",
         "attributes" : {
           "flex" : "WH",
           "data_source_items" : "Row 1\nRow 2\nRow 3",
-          "data_source_font_size" : 18,
+          "name" : "participents",
           "frame" : "{{205, 196}, {200, 200}}",
           "uuid" : "368B6555-D10B-4BAA-A6C9-ADA304829184",
           "data_source_number_of_lines" : 1,
           "class" : "TableView",
+          "data_source_font_size" : 18,
           "background_color" : "RGBA(1.0, 1.0, 1.0, 1.0)",
-          "data_source_delete_enabled" : true,
-          "name" : "participents",
-          "row_height" : 44
+          "row_height" : 44,
+          "data_source_delete_enabled" : true
         },
         "selected" : false
       },
@@ -30,7 +30,7 @@
         "class" : "TextField",
         "attributes" : {
           "uuid" : "4C581370-B783-4766-83D4-7315678FD56D",
-          "flex" : "T",
+          "flex" : "RTB",
           "corner_radius" : 10,
           "frame" : "{{205, 280}, {200, 32}}",
           "border_width" : 1,
@@ -50,12 +50,12 @@
         "nodes" : [
 
         ],
-        "frame" : "{{486, 576}, {41, 32}}",
+        "frame" : "{{437, 576}, {52, 32}}",
         "class" : "Button",
         "attributes" : {
           "border_width" : 1,
           "action" : "drawWinner",
-          "flex" : "T",
+          "flex" : "LRTB",
           "frame" : "{{265, 280}, {80, 32}}",
           "title" : "Draw",
           "uuid" : "2BE27A8A-8077-40D8-B0B5-100C822885AB",
@@ -65,7 +65,7 @@
           "font_size" : 15,
           "name" : "drawButton"
         },
-        "selected" : true
+        "selected" : false
       },
       {
         "nodes" : [
@@ -74,13 +74,14 @@
         "frame" : "{{6, 616}, {82, 25}}",
         "class" : "Label",
         "attributes" : {
-          "name" : "label1",
+          "flex" : "RT",
+          "font_size" : 18,
           "frame" : "{{229, 310}, {150, 32}}",
           "uuid" : "D11A1DBA-AD23-4610-87FE-E8929F6C90B4",
           "class" : "Label",
           "alignment" : "right",
           "text" : "Total:",
-          "font_size" : 18,
+          "name" : "label1",
           "font_name" : "<System>"
         },
         "selected" : false
@@ -92,13 +93,14 @@
         "frame" : "{{96, 614}, {83, 32}}",
         "class" : "Label",
         "attributes" : {
-          "name" : "total",
+          "flex" : "LRT",
+          "font_size" : 18,
           "frame" : "{{229, 310}, {150, 32}}",
           "uuid" : "C5CACC53-276F-4D87-A3F7-77CA7BA2663B",
           "class" : "Label",
           "alignment" : "left",
           "text" : "Label",
-          "font_size" : 18,
+          "name" : "total",
           "font_name" : "<System>"
         },
         "selected" : false
@@ -110,13 +112,14 @@
         "frame" : "{{187, 614}, {71, 32}}",
         "class" : "Label",
         "attributes" : {
-          "name" : "label2",
+          "flex" : "LRT",
+          "font_size" : 18,
           "frame" : "{{229, 310}, {150, 32}}",
           "uuid" : "7B8785F5-DAA4-4D40-9D2D-AA4603B56F6F",
           "class" : "Label",
           "alignment" : "right",
           "text" : "Pot:",
-          "font_size" : 18,
+          "name" : "label2",
           "font_name" : "<System>"
         },
         "selected" : false
@@ -128,16 +131,53 @@
         "frame" : "{{266, 614}, {85, 32}}",
         "class" : "Label",
         "attributes" : {
-          "name" : "pot",
+          "flex" : "LRT",
+          "font_size" : 18,
           "frame" : "{{229, 310}, {150, 32}}",
           "uuid" : "4377F006-4E60-4120-92B6-96554D8A9AD7",
           "class" : "Label",
           "alignment" : "left",
           "text" : "Label",
-          "font_size" : 18,
+          "name" : "pot",
           "font_name" : "<System>"
         },
         "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{504, 576}, {56, 30}}",
+        "class" : "Button",
+        "attributes" : {
+          "flex" : "LRTB",
+          "action" : "toggleEditing",
+          "name" : "toggleEdit",
+          "frame" : "{{264, 310}, {80, 32}}",
+          "title" : "",
+          "uuid" : "53B9BAD2-4B94-4052-AEDA-A485EE3594A4",
+          "class" : "Button",
+          "font_size" : 15,
+          "image_name" : "iob:gear_a_32"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{31, 539}, {197, 29}}",
+        "class" : "SegmentedControl",
+        "attributes" : {
+          "action" : "toggleAttendSales",
+          "flex" : "LRTB",
+          "segments" : "Attendance|Ticket Sales",
+          "frame" : "{{244, 312}, {120, 29}}",
+          "uuid" : "D7B5C9BA-030A-44C4-9AEB-8079E4D4C4D5",
+          "class" : "SegmentedControl",
+          "name" : "AttendSales"
+        },
+        "selected" : true
       }
     ],
     "frame" : "{{0, 0}, {607, 652}}",
