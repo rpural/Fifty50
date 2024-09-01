@@ -38,6 +38,8 @@ from pathlib import Path
 
 version = '1.02'
 
+sales = False
+
 class Participents:
 	def __init__(self):
 		self.items = []
@@ -59,6 +61,8 @@ class Participents:
 		cell = ui.TableViewCell(style='subtitle')
 		cell.text_label.text = self.items[row]['text_label']
 		cell.detail_text_label.text = self.items[row]['detail_text_label']
+		if self.items[row]['present']:
+			cell.accessory_type = 'checkmark'
 		return cell
 
 	def tableview_title_for_header(self, tableview, section):
@@ -87,14 +91,17 @@ class Participents:
 	# delegate methods	
 	def tableview_did_select(self, tableview, section, row):
 		# Called when a row was selected.
-		if ev['participents'].editing:
-			incr = -1
+		if sales:
+			if ev['participents'].editing:
+				incr = -1
+			else:
+				incr = 1
+			ev['participents'].data_source.items[row]['count'] += incr
+			ev['participents'].data_source.items[row]['detail_text_label'] = f'{ev["participents"].data_source.items[row]["count"]} tickets  (${ev["participents"].data_source.items[row]["count"] * ev["participents"].data_source.ticketCost:,.2f})'
+			self.calculate_total()
 		else:
-			incr = 1
-		ev['participents'].data_source.items[row]['count'] += incr
-		ev['participents'].data_source.items[row]['detail_text_label'] = f'{ev["participents"].data_source.items[row]["count"]} tickets'
+			ev['participents'].data_source.items[row]['present'] = False if ev['participents'].editing else True
 		ev['participents'].reload_data()
-		self.calculate_total()
 		ev['total'].text = f"${ev['participents'].data_source.total:,.2f}"
 		ev['pot'].text = f"${ev['participents'].data_source.pot:,.2f}"
 
@@ -111,7 +118,7 @@ class Participents:
 		try:
 			with open(self.filename, "r") as f:
 				names = json.load(f)
-				self.items = [{'text_label': n, 'detail_text_label': ' ', 'count': 0} for n in names]
+				self.items = [{'text_label': n, 'detail_text_label': ' ', 'count': 0, 'present': False} for n in names]
 				self.items.sort(key=lambda n: n['text_label'])
 				return True
 		except FileNotFoundError:
@@ -142,11 +149,18 @@ def setupComplete(sender):
 def newName(sender):
 	name = sender.text
 	sender.text = ''
-	ev['participents'].data_source.items.append({'text_label': name, 'detail_text_label': ' ', 'count': 0})
+	ev['participents'].data_source.items.append({'text_label': name, 'detail_text_label': ' ', 'count': 0, 'present': True})
 	ev['participents'].data_source.items.sort(key=lambda n: n['text_label'])
 	ev['participents'].reload_data()
 	ev['participents'].data_source.save_names()
-	
+
+def toggleAttendSales(sender):
+	global sales
+	if sender.selected_index == 0:
+		sales = False
+	else:
+		sales = True	
+			
 def toggleEditing(sender):
 	if ev['participents'].editing == True:
 		ev['participents'].set_editing(False)
@@ -170,10 +184,14 @@ def drawWinner(sender):
 	
 def create_log(winner):
 	data = ev['participents'].data_source
-	p = Path(data.filename).stem + '.log'
+	logpath = Path(data.filename).stem + '.log'
+	attendpath = Path(data.filename).stem + 'attendance'
 	entries = {d['text_label']: d['count'] for d in data.items}
-	with open(p, "a") as f:
+	attendance = [d['text_label'] for d in data.items if d['present']]
+	with open(logpath, "a") as f:
 		print(f'{{ "timestamp": "{date.today()}", "winner": "{winner}", "total": {data.total:,.2f}, "entries": {data.entries}, "pot": {data.pot:,.2f} "salesrec": {entries} }}', file=f)
+	with open(attendpath, "a") as f:
+		print(f'{{ "timestamp": "{date.today()}", "attendance": {attendance} }}', file=f)
 
 v = ui.load_view()
 v.name = 'Fifty50'
