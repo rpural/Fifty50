@@ -7,6 +7,7 @@
       per ticket and the name of an
       optional JSON file with a list of 
       names to begin the entries list. 
+      
     - An entries screen, listing people's
       names, with a number of tickets
       bought beneath each name (initially
@@ -16,6 +17,7 @@
       each time. Once all the purchases
       have been made, pressing Draw will
       draw a winning ticket. 
+      
     - The winner's page, which shows the
       name drawn, the number of entries
       and the dollar amount received,
@@ -36,7 +38,7 @@ import random
 from datetime import date
 from pathlib import Path
 
-version = '1.02'
+version = '1.10'
 
 sales = False
 
@@ -96,7 +98,10 @@ class Participents:
 				incr = -1
 			else:
 				incr = 1
+				ev['participents'].data_source.items[row]['present'] = True
 			ev['participents'].data_source.items[row]['count'] += incr
+			if ev['participents'].data_source.items[row]['count'] < 0:
+				ev['participents'].data_source.items[row]['count'] = 0
 			ev['participents'].data_source.items[row]['detail_text_label'] = f'{ev["participents"].data_source.items[row]["count"]} tickets  (${ev["participents"].data_source.items[row]["count"] * ev["participents"].data_source.ticketCost:,.2f})'
 			self.calculate_total()
 		else:
@@ -135,6 +140,19 @@ class Participents:
 		self.total = self.entries * self.ticketCost
 		self.pot = self.total / 2
 		
+		
+def correct_quotes(string):
+	''' Correct quotes in string to conform with the requirements of
+		  JSON. Python prints lists and dictionaries using single 
+		  quotes (apostrophies), but JSON expects double quotes. 
+		  The best solution would be to use the json module, but
+		  this is a quick fix to avoid rewriting large swaths of code. '''		
+	for i in range(len(string)):
+		if string[i] == "'":
+			string = string[:i] + '"' + string[i+1:]
+	return string
+		
+		
 def setupComplete(sender):
 	ev['participents'].delegate = ev['participents'].data_source = Participents()
 	ev['participents'].data_source.filename = sv['filename'].text or '3660.json'
@@ -144,7 +162,6 @@ def setupComplete(sender):
 	ev['total'].text = f"${ev['participents'].data_source.total:,.2f}"
 	ev['pot'].text = f"${ev['participents'].data_source.pot:,.2f}"
 	v['navView'].push_view(ev)
-	
 	
 def newName(sender):
 	name = sender.text
@@ -182,6 +199,7 @@ def drawWinner(sender):
 	wv['pot'].text = f"${ev['participents'].data_source.pot:,.2f}"
 	v['navView'].push_view(wv)
 	
+	
 def create_log(winner):
 	data = ev['participents'].data_source
 	logpath = Path(data.filename).stem + '.log'
@@ -189,10 +207,12 @@ def create_log(winner):
 	entries = {d['text_label']: d['count'] for d in data.items}
 	attendance = [d['text_label'] for d in data.items if d['present']]
 	with open(logpath, "a") as f:
-		print(f'{{ "timestamp": "{date.today()}", "winner": "{winner}", "total": {data.total:,.2f}, "entries": {data.entries}, "pot": {data.pot:,.2f} "salesrec": {entries} }}', file=f)
+		print(correct_quotes(f'{{ "timestamp": "{date.today()}", "winner": "{winner}", "total": {data.total:,.2f}, "entries": {data.entries}, "pot": {data.pot:,.2f} "salesrec": {entries} }}'), file=f)
 	with open(attendpath, "a") as f:
-		print(f'{{ "timestamp": "{date.today()}", "attendance": {attendance} }}', file=f)
-
+		print(correct_quotes(f'{{ "timestamp": "{date.today()}", "attendance": {attendance} }}'), file=f)
+	
+	
+''' main program '''	
 v = ui.load_view()
 v.name = 'Fifty50'
 
@@ -206,4 +226,4 @@ wv = ui.load_view('winnerView.pyui')
 
 v['navView'].push_view(sv)
 
-v.present('sheet')
+v.present('fullscreen')
